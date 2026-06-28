@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Form</title>
+</head>
+
+
+<body>
+<h1 style="text-align:center;">
+    User Registration Form
+</h1>
+<form method="POST" action="/submit" onsubmit="return validateForm()">
+<label>Full Name</label><br>
+
+<input
+type="text"
+id="name"
+name="name"
+required
+style="padding:10px;width:300px;"><br><br> 
+
+<label>Email</label><br>
+
+<input
+type="email"
+id="email"
+name="email"
+required
+style="padding:10px;width:300px;"><br><br>
+
+<label>Phone Number</label><br>
+
+<input
+type="tel"
+id="phone"
+name="phone"
+required
+style="padding:10px;width:300px;"><br><br>
+
+<label>Age</label><br>
+
+<input
+type="number"
+id="age"
+name="age"
+required
+style="padding:10px;width:300px;"><br><br>
+
+<label>Password</label><br>
+
+<input
+type="password"
+id="password"
+name="password"
+required
+style="padding:10px;width:300px;"><br><br>
+
+<label>Confirm Password</label><br>
+
+<input
+type="password"
+id="confirmPassword"
+name="confirmPassword"
+required
+style="padding:10px;width:300px;"><br><br>
+
+<label>Gender</label><br>
+
+<input
+type="radio"
+id="male"
+name="gender"
+value="Male">
+
+<label for="male">Male</label>
+
+<input
+type="radio"
+id="female"
+name="gender"
+value="Female">
+
+<label for="female">Female</label>
+
+<input
+type="radio"
+id="other"
+name="gender"
+value="Other">
+
+<label for="other">Other</label>
+
+<br><br>
+
+<input
+type="submit"
+value="Register"
+style="padding:10px 20px;">
+
+</form>
+<script>
+function validateForm() {
+let name = document.getElementById("name").value.trim();
+
+let email = document.getElementById("email").value.trim();
+
+let phone = document.getElementById("phone").value.trim();
+
+let age = document.getElementById("age").value;
+
+let password = document.getElementById("password").value;
+
+let confirmPassword = document.getElementById("confirmPassword").value;
+
+if (name === "") {
+    alert("Please enter your full name.");
+    return false;
+}
+
+if (!email.includes("@") || !email.includes(".")) {
+    alert("Please enter a valid email.");
+    return false;
+}
+if (age < 18) {
+    alert("You must be at least 18 years old.");
+    return false;
+}
+if (password.length < 8) {
+    alert("Password must be at least 8 characters long.");
+    return false;
+}
+if (password !== confirmPassword) {
+    alert("Passwords do not match.");
+    return false;
+}
+
+return true;
+}
+</script>
+</body>
+
+</html>

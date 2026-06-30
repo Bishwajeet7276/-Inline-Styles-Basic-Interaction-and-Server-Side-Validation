@@ -98,6 +98,66 @@ value="Register"
 style="padding:10px 20px;">
 
 </form>
+
+<script>
+function validateForm() {
+    // Get form values
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const age = document.getElementById("age").value.trim();
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+    const gender = document.querySelector('input[name="gender"]:checked');
+
+    // Validate Name (min 3 characters)
+    if (name.length < 3) {
+        alert("Name must be at least 3 characters long!");
+        return false;
+    }
+
+    // Validate Email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        alert("Please enter a valid email address!");
+        return false;
+    }
+
+    // Validate Phone (10 digits)
+    const phoneRegex = /^\d{10}$/;
+    if (!phoneRegex.test(phone.replace(/\D/g, ""))) {
+        alert("Phone number must be 10 digits!");
+        return false;
+    }
+
+    // Validate Age (18-120)
+    if (age < 18 || age > 120) {
+        alert("Age must be between 18 and 120!");
+        return false;
+    }
+
+    // Validate Password (min 6 characters)
+    if (password.length < 6) {
+        alert("Password must be at least 6 characters long!");
+        return false;
+    }
+
+    // Validate Password Match
+    if (password !== confirmPassword) {
+        alert("Passwords do not match!");
+        return false;
+    }
+
+    // Validate Gender
+    if (!gender) {
+        alert("Please select a gender!");
+        return false;
+    }
+
+    // All validations passed
+    return true;
+}
+</script>
 <script>
 function validateForm() {
 let name = document.getElementById("name").value.trim();
